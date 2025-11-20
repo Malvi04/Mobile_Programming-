@@ -40,7 +40,6 @@ class _LoanFormPageState extends State<LoanFormPage> {
     }
   }
 
-  // TAMBAHKAN FUNCTION INI UNTUK NOTIFICATION SUKSES PINJAM BUKU
   void _showSuccessNotification(BuildContext context) {
     showDialog(
       context: context,
@@ -113,8 +112,8 @@ class _LoanFormPageState extends State<LoanFormPage> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context); // Tutup dialog
-                    Navigator.pop(context); // Kembali ke category page
+                    Navigator.pop(context); 
+                    Navigator.pop(context); 
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF4F46E5),
@@ -182,7 +181,7 @@ class _LoanFormPageState extends State<LoanFormPage> {
 
             const SizedBox(height: 30),
 
-            // Nama Lengkap
+            // username form
             TextField(
               controller: _nameController,
               decoration: const InputDecoration(
@@ -194,7 +193,7 @@ class _LoanFormPageState extends State<LoanFormPage> {
 
             const SizedBox(height: 20),
 
-            // Judul Buku
+            // book title form
             TextField(
               controller: _bookController,
               decoration: const InputDecoration(
@@ -206,7 +205,7 @@ class _LoanFormPageState extends State<LoanFormPage> {
 
             const SizedBox(height: 20),
 
-            // Tanggal Pinjam
+            // loan date form
             InkWell(
               onTap: () => _selectDate(context),
               child: InputDecorator(
