@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'category_page.dart';
+import 'auth_page.dart'; 
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -66,7 +66,7 @@ class WelcomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               
-              // Button
+              // Button - UPDATE INI
               const SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
@@ -75,7 +75,7 @@ class WelcomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context, 
-                      MaterialPageRoute(builder: (context) => const CategoryPage())
+                      MaterialPageRoute(builder: (context) => const AuthPage()) // GANTI INI
                     );
                   },
                   style: ElevatedButton.styleFrom(

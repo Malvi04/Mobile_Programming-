@@ -71,7 +71,7 @@ class CategoryPage extends StatelessWidget {
               subtitle: 'Baca buku digital di perpustakaan',
               color: const Color(0xFF10B981),
               onTap: () {
-                _showComingSoon(context, 'Baca di Tempat');
+                _showReadingNotification(context);
               },
             ),
           ],
@@ -80,18 +80,102 @@ class CategoryPage extends StatelessWidget {
     );
   }
   
-  void _showComingSoon(BuildContext context, String feature) {
+
+  // TAMBAHKAN FUNCTION INI UNTUK NOTIFICATION BACA DI TEMPAT
+  void _showReadingNotification(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Fitur Segera Hadir'),
-        content: Text('Fitur "$feature" sedang dalam pengembangan.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+      barrierDismissible: false,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withAlpha(25),
+                blurRadius: 20,
+                offset: const Offset(0, 10),
+              ),
+            ],
           ),
-        ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Icon Success
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF10B981).withAlpha(30),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.menu_book_rounded,
+                  color: Color(0xFF10B981),
+                  size: 40,
+                ),
+              ),
+              
+              const SizedBox(height: 20),
+              
+              // Title
+              const Text(
+                'Selamat Membaca! 📚',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1E293B),
+                ),
+              ),
+              
+              const SizedBox(height: 16),
+              
+              // Message
+              const Text(
+                'Semoga ilmu yang Anda pelajari bermanfaat dan menambah wawasan. Nikmati proses membaca Anda!',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xFF6B7280),
+                  height: 1.5,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              
+              const SizedBox(height: 24),
+              
+              // OK Button
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context); // Tutup dialog
+                    Navigator.pop(context); // Kembali ke home (welcome page)
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF10B981),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Oke, Terima Kasih',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
