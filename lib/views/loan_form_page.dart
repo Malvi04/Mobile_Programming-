@@ -36,23 +36,107 @@ class _LoanFormPageState extends State<LoanFormPage> {
         _selectedDate
       );
       
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Peminjaman Berhasil'),
-          content: Text('Buku "${_bookController.text}" berhasil dipinjam oleh ${_nameController.text}'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pop(context);
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
+      _showSuccessNotification(context);
     }
+  }
+
+  // TAMBAHKAN FUNCTION INI UNTUK NOTIFICATION SUKSES PINJAM BUKU
+  void _showSuccessNotification(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withAlpha(25),
+                blurRadius: 20,
+                offset: const Offset(0, 10),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Icon Success
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF4F46E5).withAlpha(30),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.check_circle_rounded,
+                  color: Color(0xFF4F46E5),
+                  size: 40,
+                ),
+              ),
+              
+              const SizedBox(height: 20),
+              
+              // Title
+              const Text(
+                'Peminjaman Berhasil! 📚',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1E293B),
+                ),
+              ),
+              
+              const SizedBox(height: 16),
+              
+              // Message
+              Text(
+                'Buku "${_bookController.text}" berhasil dipinjam.\n\nSelamat membaca dan menambah wawasan!\n\nJangan lupa tanggal balikinnya yaa 😊',
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Color(0xFF6B7280),
+                  height: 1.5,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              
+              const SizedBox(height: 24),
+              
+              // OK Button
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context); // Tutup dialog
+                    Navigator.pop(context); // Kembali ke category page
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF4F46E5),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Oke, Terima Kasih',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
