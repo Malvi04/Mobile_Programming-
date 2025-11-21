@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'category_page.dart';
+import 'auth_page.dart'; 
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -31,7 +31,7 @@ class WelcomePage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.white.withAlpha(25),
+                        color: Colors.white.withAlpha(50),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: const Icon(
@@ -74,7 +74,7 @@ class WelcomePage extends StatelessWidget {
                           height: 200,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white.withAlpha(25),
+                            color: Colors.white.withAlpha(40),
                           ),
                         ),
                         
@@ -86,7 +86,7 @@ class WelcomePage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(24),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withAlpha(75),
+                                color: Colors.black.withAlpha(80),
                                 blurRadius: 20,
                                 offset: const Offset(0, 10),
                               ),
@@ -121,7 +121,7 @@ class WelcomePage extends StatelessWidget {
                   'Jelajahi ribuan koleksi buku, pinjam dengan mudah, dan tingkatkan pengetahuan Anda',
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.white.withAlpha(204),
+                    color: Colors.white.withAlpha(200),
                     height: 1.5,
                   ),
                   textAlign: TextAlign.center,
@@ -136,7 +136,7 @@ class WelcomePage extends StatelessWidget {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF4F46E5).withAlpha(102),
+                        color: const Color(0xFF4F46E5).withAlpha(100),
                         blurRadius: 15,
                         offset: const Offset(0, 8),
                       ),
@@ -146,7 +146,7 @@ class WelcomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => const CategoryPage())
+                        MaterialPageRoute(builder: (context) => const AuthPage()) // PASTIKAN INI AUTH_PAGE
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -178,7 +178,7 @@ class WelcomePage extends StatelessWidget {
                     'Pelajari Lebih Lanjut',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.white.withAlpha(179),
+                      color: Colors.white.withAlpha(180),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
